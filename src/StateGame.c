@@ -1,7 +1,7 @@
 #include "Banks/SetBank2.h"
 
-#include "..\res\src\tiles.h"
-#include "..\res\src\map.h"
+#include "..\res\src\tiles_beach.h"
+#include "..\res\src\beach.h"
 
 #include "ZGBMain.h"
 #include "Scroll.h"
@@ -18,8 +18,8 @@ void Start_StateGame() {
 
 	scroll_target = SpriteManagerAdd(SpritePlayer, 50, 50);
 
-	InitScrollTiles(0, &tiles, bank_tiles);
-	InitScroll(mapWidth, mapHeight, map, 0, 0, 3);
+	InitScrollTiles(0, &tiles_beach, bank_tiles_beach);
+	InitScroll(beachWidth, beachHeight, beach, 0, 0, 3);
 	SHOW_BKG;
 }
 
