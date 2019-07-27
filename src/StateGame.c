@@ -7,6 +7,8 @@
 #include "Scroll.h"
 #include "SpriteManager.h"
 
+UINT8 collision_tiles[] = {1, 2, 3, 4, 5, 6, 0};
+
 void Start_StateGame() {
 	UINT8 i;
 
@@ -19,7 +21,7 @@ void Start_StateGame() {
 	scroll_target = SpriteManagerAdd(SpritePlayer, 50, 50);
 
 	InitScrollTiles(0, &tiles_beach, bank_tiles_beach);
-	InitScroll(beachWidth, beachHeight, beach, 0, 0, 3);
+	InitScroll(beachWidth, beachHeight, beach, collision_tiles, 0, 3);
 	SHOW_BKG;
 }
 
