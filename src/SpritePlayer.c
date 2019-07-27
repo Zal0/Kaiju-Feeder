@@ -24,6 +24,9 @@ fixed chopter_y_dec;
 INT16 chopter_vx;
 INT16 chopter_vy;
 
+extern struct Sprite* sprite_gancho;
+struct Sprite* sprite_chopter;
+
 void SetPlayerState(PlayerState _state) {
 	player_state = _state;
 
@@ -43,6 +46,7 @@ void SetPlayerState(PlayerState _state) {
 void Start_SpritePlayer() {
 	SetPlayerState(StateLanded);
 	THIS->y = 104u;
+	sprite_chopter = THIS;
 }
 
 void Update_SpritePlayer() {
@@ -115,6 +119,10 @@ void Update_SpritePlayer() {
 			} else {
 				SetSpriteAnim(THIS, anim_idle, 15);
 			}
+
+			if(!sprite_gancho && KEY_TICKED(J_B)) {
+				SpriteManagerAdd(SpriteGancho, THIS->x, THIS->y);
+			}
 			break;
 		}
 
@@ -140,4 +148,5 @@ void Update_SpritePlayer() {
 }
 
 void Destroy_SpritePlayer() {
+	sprite_chopter = 0;
 }
