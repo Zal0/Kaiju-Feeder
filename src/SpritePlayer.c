@@ -68,22 +68,36 @@ void Update_SpritePlayer() {
 				if(chopter_vy > 150)
 					chopter_vy = 150;
 			}
-			
+
 			if(KEY_PRESSED(J_LEFT)) {
-				inc_x = -1;
-				SetSpriteAnim(THIS, anim_flying, 15);
-				SPRITE_SET_VMIRROR(THIS);
+				chopter_vx -= 10u << delta_time;
+				if(chopter_vx < -300)
+					chopter_vx = -300;
+			} else if(KEY_PRESSED(J_RIGHT)) {
+				chopter_vx += 10u << delta_time;
+				if(chopter_vx > 300)
+					chopter_vx = 300;
+			} else {
+				if(chopter_vx > 0) {
+					chopter_vx -= 10u << delta_time;
+					if(chopter_vx < 0)
+						chopter_vx = 0;
+				} else {
+					chopter_vx += 10u << delta_time;
+					if(chopter_vx > 0)
+						chopter_vx = 0;
+				}
 			}
-			if(KEY_PRESSED(J_RIGHT)) {
-				inc_x = 1;
-				SetSpriteAnim(THIS, anim_flying, 15);
-				SPRITE_UNSET_VMIRROR(THIS);
-			}
-			
+
 			chopter_y_dec.w += chopter_vy;
 			if(chopter_y_dec.b.h) {
 				inc_y = chopter_y_dec.b.h;
 				chopter_y_dec.b.h = 0;
+			}
+			chopter_x_dec.w += chopter_vx;
+			if(chopter_x_dec.b.h) {
+				inc_x = chopter_x_dec.b.h;
+				chopter_x_dec.b.h = 0;
 			}
 
 			tile_coll = TranslateSprite(THIS, inc_x, inc_y);
@@ -91,9 +105,14 @@ void Update_SpritePlayer() {
 				THIS->y = 0;
 				chopter_vy = 0;
 			}
-
 			
-			if(keys == 0) {
+			if(chopter_vx > 255) {
+				SetSpriteAnim(THIS, anim_flying, 15);
+				SPRITE_UNSET_VMIRROR(THIS);
+			} else if(chopter_vx < -255) {
+				SetSpriteAnim(THIS, anim_flying, 15);
+				SPRITE_SET_VMIRROR(THIS);
+			} else {
 				SetSpriteAnim(THIS, anim_idle, 15);
 			}
 			break;
