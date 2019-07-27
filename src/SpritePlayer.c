@@ -5,6 +5,7 @@
 #include "ZGBMain.h"
 #include "main.h"
 #include "Print.h"
+#include "Math.h"
 
 UINT8 anim_landed[] = {10, 0, 6, 0, 6, 0, 6, 0, 6, 0, 1};
 UINT8 anim_idle[]   = {2, 4, 5};
@@ -86,6 +87,11 @@ void Update_SpritePlayer() {
 			}
 
 			tile_coll = TranslateSprite(THIS, inc_x, inc_y);
+			if(U_LESS_THAN(THIS->y, 0)) {
+				THIS->y = 0;
+				chopter_vy = 0;
+			}
+
 			
 			if(keys == 0) {
 				SetSpriteAnim(THIS, anim_idle, 15);
