@@ -7,6 +7,9 @@
 #include "Scroll.h"
 #include "SpriteManager.h"
 
+#include "Print.h"
+#include "../res/src/font.h"
+
 UINT8 collision_tiles[] = {1, 2, 3, 4, 5, 6, 0};
 
 void Start_StateGame() {
@@ -23,6 +26,8 @@ void Start_StateGame() {
 	InitScrollTiles(0, &tiles_beach, bank_tiles_beach);
 	InitScroll(beachWidth, beachHeight, beach, collision_tiles, 0, 3);
 	SHOW_BKG;
+
+	INIT_CONSOLE(font, 3, 2);
 }
 
 void Update_StateGame() {
