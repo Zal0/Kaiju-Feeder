@@ -79,11 +79,11 @@ void Update_SpritePlayer() {
 					chopter_vx = 300;
 			} else {
 				if(chopter_vx > 0) {
-					chopter_vx -= 10u << delta_time;
+					chopter_vx -= 3 << delta_time;
 					if(chopter_vx < 0)
 						chopter_vx = 0;
 				} else {
-					chopter_vx += 10u << delta_time;
+					chopter_vx += 3 << delta_time;
 					if(chopter_vx > 0)
 						chopter_vx = 0;
 				}
