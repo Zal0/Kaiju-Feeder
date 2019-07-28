@@ -13,11 +13,12 @@ UINT8 anim_idle[]   = {2, 4, 5};
 UINT8 anim_flying[] = {2, 2, 3};
 UINT8 anim_dying[]  = {6, 8, 9, 10, 11, 12, 12};
 UINT8 anim_turning[]  = {4, 4, 15, 6, 6};
+UINT8 anim_win[]      = {1, 7};
 
 typedef enum {
 	StateLanded,
 	StateFlying,
-	StateDying,
+	StateDying
 }PlayerState;
 PlayerState player_state;
 
@@ -30,6 +31,7 @@ extern struct Sprite* sprite_gancho;
 extern struct Sprite* sprite_turbo;
 struct Sprite* sprite_chopter;
 
+extern UINT16 level_done;
 
 void SetPlayerState(PlayerState _state) {
 	player_state = _state;
@@ -56,6 +58,13 @@ void Update_SpritePlayer() {
 	UINT8 tile_coll = 0;
 	INT8 inc_x = 0;
 	INT8 inc_y = 0;
+
+	if(level_done) {
+		SetSpriteAnim(THIS, anim_win, 13);
+
+		return;
+	}
+	
 
 	switch(player_state) {
 		case StateLanded: {

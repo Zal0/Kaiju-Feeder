@@ -23,6 +23,7 @@ struct LevelData {
 };
 
 UINT8 current_level = 0;
+UINT16 level_done = 0;
 struct LevelData level_datas[] = {
 	{beachWidth, beachHeight, beach, 3},
 	{beach_lvl2Width, beach_lvl2Height, beach_lvl2, 3}
@@ -55,4 +56,12 @@ void Update_StateGame() {
 		SetState(StateGame);
 	}
 #endif
+	if(level_done) {
+		level_done ++;
+		if(level_done > 120) {
+			level_done = 0;
+			current_level ++;
+			SetState(StateGame);
+		}
+	}
 }
