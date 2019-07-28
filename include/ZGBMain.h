@@ -9,6 +9,7 @@ STATE_DEF_END
 _SPRITE_DMG(SpritePlayer, helo)\
 _SPRITE_DMG(SpriteGancho, gancho)\
 _SPRITE_DMG(SpriteRope, bolita)\
+_SPRITE_DMG(SpritePollo, pollo)\
 SPRITE_DEF_END
 
 #include "ZGBMain_Init.h"
