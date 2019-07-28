@@ -1,0 +1,1 @@
+..\..\pngb\bin\pngb.exe -mgse -base 0 -name cover ..\res\cover.png cover.c
