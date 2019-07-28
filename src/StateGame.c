@@ -11,6 +11,7 @@
 #include "../res/src/font.h"
 
 UINT8 collision_tiles[] = {1, 2, 3, 4, 5, 6, 0};
+extern struct Sprite* sprite_chopter;
 
 void Start_StateGame() {
 	UINT8 i;
@@ -21,13 +22,13 @@ void Start_StateGame() {
 	}
 	SHOW_SPRITES;
 
-	scroll_target = SpriteManagerAdd(SpritePlayer, 50, 50);
-
 	InitScrollTiles(0, &tiles_beach, bank_tiles_beach);
 	InitScroll(beachWidth, beachHeight, beach, collision_tiles, 0, 3);
 	SHOW_BKG;
 
 	INIT_CONSOLE(font, 3, 2);
+
+	scroll_target = sprite_chopter;
 }
 
 void Update_StateGame() {
