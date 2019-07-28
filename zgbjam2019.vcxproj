@@ -26,6 +26,7 @@
     <ClCompile Include="src\SpriteRope.c" />
     <ClCompile Include="src\SpriteTurbo.c" />
     <ClCompile Include="src\StateCover.c" />
+    <ClCompile Include="src\StateCoverWin.c" />
     <ClCompile Include="src\StateGame.c" />
     <ClCompile Include="src\ZGBMain.c" />
   </ItemGroup>

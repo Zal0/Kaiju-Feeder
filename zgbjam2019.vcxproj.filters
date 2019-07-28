@@ -43,6 +43,9 @@
     <ClCompile Include="src\StateCover.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\StateCoverWin.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Makefile" />
