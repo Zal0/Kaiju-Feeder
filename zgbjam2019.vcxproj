@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\SpriteGancho.c" />
     <ClCompile Include="src\SpritePlayer.c" />
+    <ClCompile Include="src\SpriteRope.c" />
     <ClCompile Include="src\StateGame.c" />
     <ClCompile Include="src\ZGBMain.c" />
   </ItemGroup>

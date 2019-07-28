@@ -1,9 +1,11 @@
 #include "Banks/SetBank2.h"
 
 #include "SpriteManager.h"
+#include "ZGBMain.h"
 
 struct Sprite* sprite_gancho = 0;
 extern struct Sprite* sprite_chopter;
+extern struct Sprite* sprite_rope;
 
 struct GanchoInfo {
 	INT8 y;
@@ -15,6 +17,8 @@ void Start_SpriteGancho() {
 	data->y = sprite_chopter->y;
 	data->vy = 1;
 	sprite_gancho = THIS;
+
+	SpriteManagerAdd(SpriteRope, THIS->x, THIS->y);
 }
 
 void Update_SpriteGancho() {
@@ -35,11 +39,12 @@ void Update_SpriteGancho() {
 		THIS->y = new_y;
 		if(THIS->y < sprite_chopter->y) {
 			SpriteManagerRemove(THIS_IDX);
+			SpriteManagerRemoveSprite(sprite_rope);
 		}
 	}
-	//if((data->y - sprite_chopter->y) > 60) {
-	//	data->y = sprite_chopter->y + 60;
-	//}
+	if((data->y - sprite_chopter->y) > 60) {
+		data->y = sprite_chopter->y + 60;
+	}
 }
 
 void Destroy_SpriteGancho() {
