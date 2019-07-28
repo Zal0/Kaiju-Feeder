@@ -26,7 +26,9 @@ INT16 chopter_vx;
 INT16 chopter_vy;
 
 extern struct Sprite* sprite_gancho;
+extern struct Sprite* sprite_turbo;
 struct Sprite* sprite_chopter;
+
 
 void SetPlayerState(PlayerState _state) {
 	player_state = _state;
@@ -77,12 +79,20 @@ void Update_SpritePlayer() {
 
 			if(KEY_PRESSED(J_LEFT)) {
 				chopter_vx -= 3u << delta_time;
-				if(chopter_vx < -300)
+				if(chopter_vx < -300) {
 					chopter_vx = -300;
+					if(!sprite_turbo) {
+						SpriteManagerAdd(SpriteTurbo, 0, 0);
+					}
+				}
 			} else if(KEY_PRESSED(J_RIGHT)) {
 				chopter_vx += 3u << delta_time;
-				if(chopter_vx > 300)
+				if(chopter_vx > 300) {
 					chopter_vx = 300;
+					if(!sprite_turbo) {
+						SpriteManagerAdd(SpriteTurbo, 0, 0);
+					}
+				}
 			} else {
 				if(chopter_vx > 0) {
 					chopter_vx -= 3 << delta_time;
@@ -92,6 +102,10 @@ void Update_SpritePlayer() {
 					chopter_vx += 3 << delta_time;
 					if(chopter_vx > 0)
 						chopter_vx = 0;
+				}
+
+				if(sprite_turbo) {
+					SpriteManagerRemoveSprite(sprite_turbo);
 				}
 			}
 
