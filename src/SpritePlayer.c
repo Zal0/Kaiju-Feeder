@@ -12,7 +12,7 @@ UINT8 anim_landed[] = {10, 0, 6, 0, 6, 0, 6, 0, 6, 0, 1};
 UINT8 anim_idle[]   = {2, 4, 5};
 UINT8 anim_flying[] = {2, 2, 3};
 UINT8 anim_dying[]  = {6, 8, 9, 10, 11, 12, 12};
-UINT8 anim_turning[]  = {3, 4, 6, 6};
+UINT8 anim_turning[]  = {4, 4, 15, 6, 6};
 
 typedef enum {
 	StateLanded,
@@ -127,7 +127,7 @@ void Update_SpritePlayer() {
 			}
 
 			if(THIS->anim_data == anim_turning) {
-				if(THIS->current_frame == 2) {
+				if(THIS->current_frame == 3) {
 					if(SPRITE_GET_VMIRROR(THIS)) {
 						SPRITE_UNSET_VMIRROR(THIS);
 					} else {
