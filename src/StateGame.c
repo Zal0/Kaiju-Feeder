@@ -10,7 +10,7 @@
 #include "Print.h"
 #include "../res/src/font.h"
 
-UINT8 collision_tiles[] = {1, 2, 3, 4, 5, 6, 0};
+UINT8 collision_tiles[] = {1, 2, 3, 6, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 0};
 extern struct Sprite* sprite_chopter;
 
 void Start_StateGame() {
@@ -24,11 +24,14 @@ void Start_StateGame() {
 
 	InitScrollTiles(0, &tiles_beach, bank_tiles_beach);
 	InitScroll(beachWidth, beachHeight, beach, collision_tiles, 0, 3);
-	SHOW_BKG;
-
-	INIT_CONSOLE(font, 3, 2);
 
 	scroll_target = sprite_chopter;
+	InitScroll(beachWidth, beachHeight, beach, collision_tiles, 0, 3); //Init again with the camera placed in the right position
+	SHOW_BKG;
+
+	
+
+	INIT_CONSOLE(font, 3, 2);
 }
 
 void Update_StateGame() {

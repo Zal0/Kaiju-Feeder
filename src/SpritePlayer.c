@@ -6,6 +6,7 @@
 #include "main.h"
 #include "Print.h"
 #include "Math.h"
+#include "Scroll.h"
 
 UINT8 anim_landed[] = {10, 0, 6, 0, 6, 0, 6, 0, 6, 0, 1};
 UINT8 anim_idle[]   = {2, 4, 5};
@@ -50,7 +51,6 @@ void Start_SpritePlayer() {
 	SetPlayerState(StateLanded);
 	THIS->y = 104u;
 	sprite_chopter = THIS;
-	//SpriteManagerAdd(SpriteTurbo, THIS->x, THIS->y);
 }
 
 void Update_SpritePlayer() {
