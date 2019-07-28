@@ -37,6 +37,11 @@ void SetPlayerState(PlayerState _state) {
 	player_state = _state;
 
 	switch(_state) {
+		case StateFlying:
+			chopter_vx = 0;
+			chopter_vy = 0;
+			break;
+
 		case StateLanded:
 			SetSpriteAnim(THIS, anim_landed, 15);
 			chopter_vy = 0;
