@@ -31,7 +31,7 @@ void Update_SpritePollo() {
 	} else {
 		if(data->vy) {
 			if(tile_coll = TranslateSprite(THIS, 0, data->vy)) {
-				SetSpriteAnim(THIS, anim_pollo_dying, 15);
+				//SetSpriteAnim(THIS, anim_pollo_dying, 15);
 			}
 		}
 	}
