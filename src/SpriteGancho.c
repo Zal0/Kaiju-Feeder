@@ -9,8 +9,8 @@ extern struct Sprite* sprite_chopter;
 extern struct Sprite* sprite_rope;
 
 struct GanchoInfo {
-	INT8 y;
-	INT8 vy;
+	INT16 y;
+	INT16 vy;
 };
 
 void Start_SpriteGancho() {
