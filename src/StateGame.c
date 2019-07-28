@@ -3,6 +3,7 @@
 #include "..\res\src\tiles_beach.h"
 #include "..\res\src\beach.h"
 #include "..\res\src\beach_lvl2.h"
+#include "..\res\src\beach_lvl3.h"
 
 #include "ZGBMain.h"
 #include "Scroll.h"
@@ -26,8 +27,10 @@ UINT8 current_level = 0;
 UINT16 level_done = 0;
 struct LevelData level_datas[] = {
 	{beachWidth, beachHeight, beach, 3},
-	{beach_lvl2Width, beach_lvl2Height, beach_lvl2, 3}
+	{beach_lvl2Width, beach_lvl2Height, beach_lvl2, 3},
+	{beach_lvl3Width, beach_lvl3Height, beach_lvl3, 3}
 };
+UINT8 num_levels = 3;
 
 void Start_StateGame() {
 	UINT8 i;
@@ -63,7 +66,7 @@ void Update_StateGame() {
 		if(level_done > 120) {
 			level_done = 0;
 			current_level ++;
-			SetState(StateGame);
+			SetState(StateCoverWin);
 		}
 	}
 }

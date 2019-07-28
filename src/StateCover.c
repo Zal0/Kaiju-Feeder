@@ -19,14 +19,16 @@ void Start_StateCover() {
 	SHOW_BKG;
 	HIDE_WIN;
 
-	//INIT_FONT(font, PRINT_BKG);
-	//PRINT(1, 5, "CONGRATULATIONS!!!");
+	INIT_FONT(font, PRINT_BKG);
+	PRINT(0, 14, "EMILIO J. DOMINGUEZ");
+	PRINT(7, 15, "ZALO");
+	PRINT(4, 17, "ZGBJAM2 2019");
 
 	current_level = 0;
 }
 
 void Update_StateCover() {
 	if(keys != 0) {
-		SetState(StateGame);
+		SetState(StateCoverWin);
 	}
 }
