@@ -49,7 +49,6 @@ void SetPlayerState(PlayerState _state) {
 
 void Start_SpritePlayer() {
 	SetPlayerState(StateLanded);
-	THIS->y = 104u;
 	sprite_chopter = THIS;
 }
 

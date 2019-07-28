@@ -31,11 +31,7 @@ void Update_SpritePollo() {
 	} else {
 		if(data->vy) {
 			if(tile_coll = TranslateSprite(THIS, 0, data->vy)) {
-				if(tile_coll == 25 || tile_coll == 26 || tile_coll == 39 || tile_coll == 3) {
-					THIS->y += 2;
-				} else {
-					SetSpriteAnim(THIS, anim_pollo_dying, 15);
-				}
+				SetSpriteAnim(THIS, anim_pollo_dying, 15);
 			}
 		}
 	}
