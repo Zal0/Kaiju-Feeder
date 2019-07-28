@@ -48,6 +48,7 @@ void Start_SpritePlayer() {
 	SetPlayerState(StateLanded);
 	THIS->y = 104u;
 	sprite_chopter = THIS;
+	//SpriteManagerAdd(SpriteTurbo, THIS->x, THIS->y);
 }
 
 void Update_SpritePlayer() {
