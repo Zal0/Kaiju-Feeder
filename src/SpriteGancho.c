@@ -51,6 +51,7 @@ void Update_SpriteGancho() {
 		if(THIS->current_frame == 1) { //pollo grabbed
 			if(TranslateSprite(THIS, new_x - THIS->x, new_y - THIS->y)) { //Gancho with pollo has collided
 				THIS->current_frame = 0;
+				SpriteManagerAdd(SpritePollo, THIS->x, THIS->y);
 			}
 		} else { //no pollo, just go up
 			THIS->x = new_x;
