@@ -20,10 +20,12 @@ void Start_SpritePollo() {
 
 void Update_SpritePollo() {
 	struct PolloInfo* data = (struct PolloInfo*)THIS->custom_data;
+	UINT8 tile_coll;
 
 	if(data->vy) {
-		if(TranslateSprite(THIS, 0, data->vy)) {
-			//SpriteManagerRemove(THIS_IDX);
+		if(tile_coll = TranslateSprite(THIS, 0, data->vy)) {
+			if(tile_coll >= 15 && tile_coll <= 24)
+				SpriteManagerRemove(THIS_IDX);
 		}
 	}
 }
