@@ -33,6 +33,8 @@ void Start_StateGame() {
 	UINT8 i;
 	struct LevelData* level = &level_datas[current_level];
 
+	level_done = 0;
+
 	SPRITES_8x16;
 	for(i = 0; i != N_SPRITE_TYPES; ++ i) {
 		SpriteManagerLoad(i);
