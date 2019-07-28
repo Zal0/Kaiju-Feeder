@@ -14,7 +14,7 @@ struct GanchoInfo {
 
 void Start_SpriteGancho() {
 	struct GanchoInfo* data = (struct GanchoInfo*)THIS->custom_data;
-	data->y = sprite_chopter->y;
+	data->y = sprite_chopter->y + 16;
 	data->vy = 1;
 	sprite_gancho = THIS;
 
@@ -37,7 +37,7 @@ void Update_SpriteGancho() {
 	} else {
 		THIS->x = new_x;
 		THIS->y = new_y;
-		if(THIS->y < sprite_chopter->y) {
+		if(THIS->y < sprite_chopter->y + 16) {
 			SpriteManagerRemove(THIS_IDX);
 			SpriteManagerRemoveSprite(sprite_rope);
 		}

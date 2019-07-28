@@ -18,15 +18,16 @@ void Start_SpriteRope() {
 }
 
 void Update_SpriteRope() {
+	UINT16 start_y = sprite_chopter->y + 16;
 	struct RopeInfo* data = (struct RopeInfo*)THIS->custom_data;
 	THIS->x = sprite_gancho->x + 4;
 
 	data->inc_y += 8;
-	THIS->y = sprite_chopter->y + data->inc_y;
-	if(sprite_gancho->y > sprite_chopter->y) {
+	THIS->y = start_y + data->inc_y;
+	if(sprite_gancho->y > start_y) {
 		while(THIS->y > sprite_gancho->y) {
 			data->inc_y = THIS->y - sprite_gancho->y;
-			THIS->y = sprite_chopter->y + data->inc_y;
+			THIS->y = start_y + data->inc_y;
 		}
 	}
 }
