@@ -2,6 +2,7 @@
 
 #include "SpriteManager.h"
 #include "ZGBMain.h"
+#include "Keys.h"
 
 struct Sprite* sprite_gancho = 0;
 extern struct Sprite* sprite_chopter;
@@ -32,7 +33,7 @@ void Update_SpriteGancho() {
 
 	new_x = sprite_chopter->x;
 	new_y = data->y;
-	if(data->vy > 0) {
+	if(data->vy > 0) { //going down
 		if(TranslateSprite(THIS, new_x - THIS->x, new_y - THIS->y)) {
 			data->vy = -3;
 		} else {
@@ -46,9 +47,9 @@ void Update_SpriteGancho() {
 				}
 			}
 		}
-	} else {
+	} else { //going up
 		if(THIS->current_frame == 1) { //pollo grabbed
-			if(TranslateSprite(THIS, new_x - THIS->x, new_y - THIS->y)) {
+			if(TranslateSprite(THIS, new_x - THIS->x, new_y - THIS->y)) { //Gancho with pollo has collided
 				THIS->current_frame = 0;
 			}
 		} else { //no pollo, just go up
@@ -64,7 +65,15 @@ void Update_SpriteGancho() {
 				SpriteManagerRemove(THIS_IDX);
 			}
 		}
+
+		if(KEY_TICKED(J_B) && THIS->current_frame == 1) {
+			//Drop the pollo
+			THIS->current_frame = 0;
+			SpriteManagerAdd(SpritePollo, THIS->x, THIS->y);
+		}
 	}
+
+	//Dont' move beyond chopter->y + 60
 	if((data->y - sprite_chopter->y) > 60) {
 		data->y = sprite_chopter->y + 60;
 	}
