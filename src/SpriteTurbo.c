@@ -4,10 +4,12 @@
 #include "Keys.h"
 
 extern struct Sprite* sprite_chopter;
+struct Sprite* sprite_turbo = 0;
 
 UINT8 anim_turbo[] = {2, 0, 1};
 
 void Start_SpriteTurbo() {
+	sprite_turbo = THIS;
 	SetSpriteAnim(THIS, anim_turbo, 15);
 }
 
@@ -23,4 +25,5 @@ void Update_SpriteTurbo() {
 }
 
 void Destroy_SpriteTurbo() {
+	sprite_turbo = 0;
 }
