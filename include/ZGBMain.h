@@ -11,6 +11,7 @@ _SPRITE_DMG(SpriteGancho, gancho)\
 _SPRITE_DMG(SpriteRope, bolita)\
 _SPRITE_DMG(SpritePollo, pollo)\
 _SPRITE_DMG(SpriteTurbo, heloturbo)\
+_SPRITE_DMG(SpriteMouth, monster)\
 SPRITE_DEF_END
 
 #include "ZGBMain_Init.h"
