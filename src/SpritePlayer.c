@@ -11,6 +11,7 @@ UINT8 anim_landed[] = {10, 0, 6, 0, 6, 0, 6, 0, 6, 0, 1};
 UINT8 anim_idle[]   = {2, 4, 5};
 UINT8 anim_flying[] = {2, 2, 3};
 UINT8 anim_dying[]  = {6, 8, 9, 10, 11, 12, 12};
+UINT8 anim_turning[]  = {3, 4, 6, 6};
 
 typedef enum {
 	StateLanded,
@@ -74,11 +75,11 @@ void Update_SpritePlayer() {
 			}
 
 			if(KEY_PRESSED(J_LEFT)) {
-				chopter_vx -= 10u << delta_time;
+				chopter_vx -= 3u << delta_time;
 				if(chopter_vx < -300)
 					chopter_vx = -300;
 			} else if(KEY_PRESSED(J_RIGHT)) {
-				chopter_vx += 10u << delta_time;
+				chopter_vx += 3u << delta_time;
 				if(chopter_vx > 300)
 					chopter_vx = 300;
 			} else {
@@ -109,15 +110,32 @@ void Update_SpritePlayer() {
 				THIS->y = 0;
 				chopter_vy = 0;
 			}
-			
-			if(chopter_vx > 255) {
-				SetSpriteAnim(THIS, anim_flying, 15);
-				SPRITE_UNSET_VMIRROR(THIS);
-			} else if(chopter_vx < -255) {
-				SetSpriteAnim(THIS, anim_flying, 15);
-				SPRITE_SET_VMIRROR(THIS);
+
+			if(THIS->anim_data == anim_turning) {
+				if(THIS->current_frame == 2) {
+					if(SPRITE_GET_VMIRROR(THIS)) {
+						SPRITE_UNSET_VMIRROR(THIS);
+					} else {
+						SPRITE_SET_VMIRROR(THIS);
+					}
+					SetSpriteAnim(THIS, anim_idle, 15);
+				}
 			} else {
-				SetSpriteAnim(THIS, anim_idle, 15);
+				if(KEY_PRESSED(J_RIGHT)) {
+					if(SPRITE_GET_VMIRROR(THIS)) {
+						SetSpriteAnim(THIS, anim_turning, 15);
+					} else {
+						SetSpriteAnim(THIS, anim_flying, 15);
+					}
+				} else if(KEY_PRESSED(J_LEFT)) {
+					if(!SPRITE_GET_VMIRROR(THIS)) {
+						SetSpriteAnim(THIS, anim_turning, 15);
+					} else {
+						SetSpriteAnim(THIS, anim_flying, 15);
+					}
+				} else {
+					SetSpriteAnim(THIS, anim_idle, 15);
+				}
 			}
 
 			if(!sprite_gancho && KEY_TICKED(J_B)) {
