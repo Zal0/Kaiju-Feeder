@@ -23,7 +23,7 @@ void Update_SpritePollo() {
 
 	if(data->vy) {
 		if(TranslateSprite(THIS, 0, data->vy)) {
-			SpriteManagerRemove(THIS_IDX);
+			//SpriteManagerRemove(THIS_IDX);
 		}
 	}
 }
