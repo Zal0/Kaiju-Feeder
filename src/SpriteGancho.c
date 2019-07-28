@@ -24,6 +24,8 @@ void Start_SpriteGancho() {
 void Update_SpriteGancho() {
 	INT16 new_x;
 	INT16 new_y;
+	UINT8 i;
+	struct Sprite* spr;
 
 	struct GanchoInfo* data = (struct GanchoInfo*)THIS->custom_data;
 	data->y += data->vy;
@@ -33,13 +35,34 @@ void Update_SpriteGancho() {
 	if(data->vy > 0) {
 		if(TranslateSprite(THIS, new_x - THIS->x, new_y - THIS->y)) {
 			data->vy = -3;
+		} else {
+			SPRITEMANAGER_ITERATE(i, spr) {
+				if(spr->type == SpritePollo) {
+					if(CheckCollision(spr, THIS)) {
+						SpriteManagerRemove(i);
+						THIS->current_frame = 1;
+						data->vy = -1;
+					}
+				}
+			}
 		}
 	} else {
-		THIS->x = new_x;
-		THIS->y = new_y;
-		if(THIS->y < sprite_chopter->y + 16) {
-			SpriteManagerRemove(THIS_IDX);
+		if(THIS->current_frame == 1) { //pollo grabbed
+			if(TranslateSprite(THIS, new_x - THIS->x, new_y - THIS->y)) {
+				THIS->current_frame = 0;
+			}
+		} else { //no pollo, just go up
+			THIS->x = new_x;
+			THIS->y = new_y;
+		}
+
+		if(THIS->y < sprite_chopter->y + 16) { //Gancho is on chopter pos
 			SpriteManagerRemoveSprite(sprite_rope);
+			if(THIS->current_frame == 1) { //Pollo grabbed, keep the gancho
+				data->y = sprite_chopter->y + 16;
+			} else { //No pollo, remove gancho
+				SpriteManagerRemove(THIS_IDX);
+			}
 		}
 	}
 	if((data->y - sprite_chopter->y) > 60) {
