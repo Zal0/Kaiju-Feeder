@@ -44,6 +44,9 @@ void Start_StateGame() {
 	}
 	SHOW_SPRITES;
 
+	scroll_top_movement_limit = 72u;
+	scroll_bottom_movement_limit = 72u;
+
 	InitScrollTiles(0, &tiles_beach, bank_tiles_beach);
 	InitScroll(level->w, level->h, level->data, collision_tiles, 0, level->bank);
 
