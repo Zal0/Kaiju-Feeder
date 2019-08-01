@@ -7,15 +7,14 @@
 
 #include "../res/src/font.h"
 
-
-extern unsigned char cover_dat[];
-extern unsigned char cover_map[];
+extern struct TilesInfo cover_tiles;
+extern struct MapInfo cover;
 
 extern UINT8 current_level;
 
 void Start_StateCover() {
-	InitScrollTilesLEGACY(0, 93, cover_dat, 3);
-	InitScrollLEGACY(20, 18, cover_map, 0, 0, 3, 0);
+	InitScrollTiles(0, &cover_tiles);
+	InitScroll(&cover, 0, 0);
 	SHOW_BKG;
 	HIDE_WIN;
 

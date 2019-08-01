@@ -8,15 +8,15 @@
 #include "../res/src/font.h"
 
 
-extern unsigned char win_dat[];
-extern unsigned char win_map[];
+extern struct TilesInfo win_tiles;
+extern struct MapInfo win;
 
 extern UINT8 current_level;
 extern UINT8 num_levels;
 
 void Start_StateCoverWin() {
-	InitScrollTilesLEGACY(0, 46, win_dat, 3);
-	InitScrollLEGACY(20, 18, win_map, 0, 0, 3, 0);
+	InitScrollTiles(0, &win_tiles);
+	InitScroll(&win, 0, 0);
 	SHOW_BKG;
 	HIDE_WIN;
 
