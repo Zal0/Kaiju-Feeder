@@ -35,7 +35,7 @@ void Update_StateCoverWin() {
 	if(current_level == num_levels) {
 
 	} else {
-		if(keys != 0) {
+		if(KEY_TICKED(0xFF)) {
 			SetState(StateGame);
 		}
 	}
