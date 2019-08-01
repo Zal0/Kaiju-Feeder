@@ -15,7 +15,7 @@ extern UINT8 current_level;
 
 void Start_StateCover() {
 	InitScrollTilesLEGACY(0, 93, cover_dat, 3);
-	InitScroll(20, 18, cover_map, 0, 0, 3);
+	InitScrollLEGACY(20, 18, cover_map, 0, 0, 3, 0);
 	SHOW_BKG;
 	HIDE_WIN;
 

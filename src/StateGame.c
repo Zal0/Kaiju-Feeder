@@ -16,25 +16,18 @@
 UINT8 collision_tiles[] = {1, 2, 3, 6, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 33, 39, 0};
 extern struct Sprite* sprite_chopter;
 
-struct LevelData {
-	UINT16 w;
-	UINT16 h;
-	UINT8* data;
-	UINT8 bank;
-};
-
 UINT8 current_level = 0;
 UINT16 level_done = 0;
-struct LevelData level_datas[] = {
-	{beachWidth, beachHeight, beach, 3},
-	{beach_lvl2Width, beach_lvl2Height, beach_lvl2, 3},
-	{beach_lvl3Width, beach_lvl3Height, beach_lvl3, 3}
+struct MapInfo* level_datas[] = {
+	&beach,
+	&beach_lvl2,
+	&beach_lvl3
 };
 UINT8 num_levels = 3;
 
 void Start_StateGame() {
 	UINT8 i;
-	struct LevelData* level = &level_datas[current_level];
+	struct MapInfo* level = level_datas[current_level];
 
 	level_done = 0;
 
@@ -47,11 +40,11 @@ void Start_StateGame() {
 	scroll_top_movement_limit = 72u;
 	scroll_bottom_movement_limit = 72u;
 
-	InitScrollTiles(0, &tiles_beach, bank_tiles_beach);
-	InitScroll(level->w, level->h, level->data, collision_tiles, 0, level->bank);
+	InitScrollTiles(0, &tiles_beach);
+	InitScroll(level, collision_tiles, 0);
 
 	scroll_target = sprite_chopter;
-	InitScroll(level->w, level->h, level->data, collision_tiles, 0, level->bank); //Init again with the camera placed in the right position
+	InitScroll(level, collision_tiles, 0); //Init again with the camera placed in the right position
 	SHOW_BKG;
 
 	INIT_CONSOLE(font, 3, 2);

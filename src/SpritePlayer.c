@@ -189,8 +189,8 @@ void Update_SpritePlayer() {
 		}
 	}
 
-	//DPRINT_POS(0, 0);
-	//DPrintf("x:%d y:%d  ", (UINT16)chopter_vx, (UINT16)chopter_vy);
+	DPRINT_POS(0, 0);
+	DPrintf("x:%d y:%d  ", (UINT16)chopter_vx, (UINT16)chopter_vy);
 }
 
 void Destroy_SpritePlayer() {
