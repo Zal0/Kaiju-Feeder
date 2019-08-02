@@ -19,6 +19,9 @@ void Start_SpriteGancho() {
 	data->vy = 1;
 	sprite_gancho = THIS;
 
+	THIS->coll_w = 4;
+	THIS->coll_x = 12;
+
 	SpriteManagerAdd(SpriteRope, THIS->x, THIS->y);
 }
 

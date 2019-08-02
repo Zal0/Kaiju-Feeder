@@ -13,6 +13,9 @@ void Start_SpritePollo() {
 	struct PolloInfo* data = (struct PolloInfo*)THIS->custom_data;
 	UINT8 coll_tile;
 
+	THIS->coll_h = 4;
+	THIS->coll_y = 12;
+
 	data->vy = 0;
 	coll_tile = GetScrollTile(THIS->x >> 3, (THIS->y + 16) >> 3);
 	if(!scroll_collisions[coll_tile]) {
