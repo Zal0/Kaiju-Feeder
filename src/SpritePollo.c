@@ -4,6 +4,7 @@
 #include "Scroll.h"
 
 UINT8 anim_pollo_dying[] = {6, 1, 2, 3, 4, 5, 5};
+extern struct Sprite* sprite_gancho;
 
 struct PolloInfo {
 	INT8 vy;
@@ -12,6 +13,11 @@ struct PolloInfo {
 void Start_SpritePollo() {
 	struct PolloInfo* data = (struct PolloInfo*)THIS->custom_data;
 	UINT8 coll_tile;
+
+	if(sprite_gancho && sprite_gancho->current_frame != 0) {
+		SpriteManagerRemove(THIS_IDX);
+		return;
+	}
 
 	THIS->coll_h = 4;
 	THIS->coll_y = 12;
