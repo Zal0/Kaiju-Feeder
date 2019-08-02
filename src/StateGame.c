@@ -27,7 +27,9 @@ UINT8 num_levels = 3;
 
 void Start_StateGame() {
 	UINT8 i;
+	UINT16 start_x, start_y;
 	struct MapInfo* level = level_datas[current_level];
+	struct Sprite* spr;
 
 	level_done = 0;
 
@@ -40,14 +42,20 @@ void Start_StateGame() {
 	scroll_top_movement_limit = 72u;
 	scroll_bottom_movement_limit = 72u;
 
+	ScrollFindTile(level, 255, 0, 0, level->width, level->height, &start_x, &start_y);
+	scroll_target = SpriteManagerAdd(SpritePlayer, start_x << 3, (start_y - 1) << 3);
+	scroll_target->unique_id = SPRITE_UNIQUE_ID(start_x, start_y);
+
 	InitScrollTiles(0, &tiles_beach);
 	InitScroll(level, collision_tiles, 0);
-
-	scroll_target = sprite_chopter;
-	InitScroll(level, collision_tiles, 0); //Init again with the camera placed in the right position
 	SHOW_BKG;
 
 	INIT_CONSOLE(font, 3, 2);
+
+	SPRITEMANAGER_ITERATE(i, spr) {
+		DPRINT_POS(0, i);
+		DPrintf("id:%d %d %d ", spr->unique_id, spr->x, spr->y);
+	}
 }
 
 void Update_StateGame() {
