@@ -1,4 +1,4 @@
-PROJECT_NAME = ZGB_TEMPLATE
+PROJECT_NAME = KaijuFeeder
 
 all: build_gb
 
