@@ -3,7 +3,7 @@
 #include "SpriteManager.h"
 #include "Scroll.h"
 
-UINT8 anim_pollo_dying[] = {6, 1, 2, 3, 4, 5, 5};
+const UINT8 anim_pollo_dying[] = {6, 1, 2, 3, 4, 5, 5};
 extern struct Sprite* sprite_gancho;
 
 struct PolloInfo {

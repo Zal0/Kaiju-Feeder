@@ -6,7 +6,7 @@
 extern struct Sprite* sprite_chopter;
 struct Sprite* sprite_turbo = 0;
 
-UINT8 anim_turbo[] = {2, 0, 1};
+const UINT8 anim_turbo[] = {2, 0, 1};
 
 void Start_SpriteTurbo() {
 	sprite_turbo = THIS;

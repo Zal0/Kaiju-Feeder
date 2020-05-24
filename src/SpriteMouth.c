@@ -2,8 +2,8 @@
 
 #include "SpriteManager.h"
 #include "ZGBMain.h"
-UINT8 mouth_anim[] = {18, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1};
-UINT8 mouth_anim_munch[] = {4, 0, 1, 2, 1};
+const UINT8 mouth_anim[] = {18, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1};
+const UINT8 mouth_anim_munch[] = {4, 0, 1, 2, 1};
 
 extern UINT16 level_done;
 
