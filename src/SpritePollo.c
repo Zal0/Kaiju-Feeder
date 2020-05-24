@@ -14,7 +14,7 @@ void Start_SpritePollo() {
 	struct PolloInfo* data = (struct PolloInfo*)THIS->custom_data;
 	UINT8 coll_tile;
 
-	if(sprite_gancho && sprite_gancho->current_frame != 0) {
+	if(sprite_gancho && sprite_gancho->anim_frame != 0) {
 		SpriteManagerRemove(THIS_IDX);
 		return;
 	}
@@ -34,7 +34,7 @@ void Update_SpritePollo() {
 	UINT8 tile_coll;
 
 	if(THIS->anim_data) {
-		if(THIS->current_frame == 5) {
+		if(THIS->anim_frame == 5) {
 			SpriteManagerRemove(THIS_IDX);
 		}
 	} else {

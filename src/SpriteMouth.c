@@ -18,7 +18,7 @@ void Update_SpriteMouth() {
 	SPRITEMANAGER_ITERATE(i, spr) {
 		if(spr->type == SpritePollo) {
 			if(!spr->anim_data && CheckCollision(THIS, spr)) {
-				if(THIS->anim_data[THIS->current_frame] == 0) {
+				if(THIS->anim_data[THIS->anim_frame] == 0) {
 					SpriteManagerRemove(i);
 					SetSpriteAnim(THIS, mouth_anim_munch, 32);
 					level_done = 1;

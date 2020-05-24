@@ -44,16 +44,16 @@ void Update_SpriteGancho() {
 				if(spr->type == SpritePollo) {
 					if(CheckCollision(spr, THIS)) {
 						SpriteManagerRemove(i);
-						THIS->current_frame = 1;
+						SET_FRAME(THIS, 1);
 						data->vy = -1;
 					}
 				}
 			}
 		}
 	} else { //going up
-		if(THIS->current_frame == 1) { //pollo grabbed
+		if(THIS->anim_frame == 1) { //pollo grabbed
 			if(TranslateSprite(THIS, new_x - THIS->x, new_y - THIS->y)) { //Gancho with pollo has collided
-				THIS->current_frame = 0;
+				SET_FRAME(THIS, 0);
 				SpriteManagerAdd(SpritePollo, THIS->x, THIS->y);
 			}
 		} else { //no pollo, just go up
@@ -63,16 +63,16 @@ void Update_SpriteGancho() {
 
 		if(THIS->y < sprite_chopter->y + 16) { //Gancho is on chopter pos
 			SpriteManagerRemoveSprite(sprite_rope);
-			if(THIS->current_frame == 1) { //Pollo grabbed, keep the gancho
+			if(THIS->anim_frame == 1) { //Pollo grabbed, keep the gancho
 				data->y = sprite_chopter->y + 16;
 			} else { //No pollo, remove gancho
 				SpriteManagerRemove(THIS_IDX);
 			}
 		}
 
-		if(KEY_TICKED(J_B) && THIS->current_frame == 1) {
+		if(KEY_TICKED(J_B) && THIS->anim_frame == 1) {
 			//Drop the pollo
-			THIS->current_frame = 0;
+			SET_FRAME(THIS, 0);
 			SpriteManagerAdd(SpritePollo, THIS->x, THIS->y);
 		}
 	}

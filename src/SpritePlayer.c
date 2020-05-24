@@ -140,7 +140,7 @@ void Update_SpritePlayer() {
 			}
 
 			if(THIS->anim_data == anim_turning) {
-				if(THIS->current_frame == 3) {
+				if(THIS->anim_frame == 3) {
 					if(SPRITE_GET_VMIRROR(THIS)) {
 						SPRITE_UNSET_VMIRROR(THIS);
 					} else {
@@ -173,7 +173,7 @@ void Update_SpritePlayer() {
 		}
 
 		case StateDying: {
-			if(THIS->current_frame == 5) {
+			if(THIS->anim_frame == 5) {
 				SetState(StateGame);
 			}
 			break;
