@@ -30,6 +30,7 @@ void Start_StateGame() {
 	UINT16 start_x, start_y;
 	struct MapInfo* level = level_datas[current_level];
 	struct Sprite* spr;
+	UINT8 map_w, map_h;
 
 	level_done = 0;
 
@@ -42,7 +43,8 @@ void Start_StateGame() {
 	scroll_top_movement_limit = 72u;
 	scroll_bottom_movement_limit = 72u;
 
-	ScrollFindTile(level, 255, 0, 0, level->width, level->height, &start_x, &start_y);
+	GetMapSize(level, &map_w, &map_h);
+	ScrollFindTile(level, 255, 0, 0, map_w, map_h, &start_x, &start_y);
 	scroll_target = SpriteManagerAdd(SpritePlayer, start_x << 3, (start_y - 1) << 3);
 	scroll_target->unique_id = SPRITE_UNIQUE_ID(start_x, start_y);
 
