@@ -5,18 +5,14 @@
 #include "Scroll.h"
 #include "Print.h"
 
-#include "../res/src/font.h"
-
-
-extern struct TilesInfo win_tiles;
-extern struct MapInfo win;
+IMPORT_TILES(font);
+IMPORT_MAP(win);
 
 extern UINT8 current_level;
 extern UINT8 num_levels;
 
 void Start_StateCoverWin() {
-	InitScrollTiles(0, &win_tiles);
-	InitScroll(&win, 0, 0);
+	InitScroll(BANK(win), &win, 0, 0);
 	SHOW_BKG;
 	HIDE_WIN;
 

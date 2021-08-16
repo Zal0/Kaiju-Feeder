@@ -49,7 +49,7 @@ void SetPlayerState(PlayerState _state) {
 
 		case StateDying:
 			SetSpriteAnim(THIS, anim_dying, 15);
-			SPRITE_UNSET_VMIRROR(THIS);
+			THIS->mirror = NO_MIRROR;
 			break;
 	}
 }
@@ -57,6 +57,8 @@ void SetPlayerState(PlayerState _state) {
 void Start_SpritePlayer() {
 	SetPlayerState(StateLanded);
 	sprite_chopter = THIS;
+	chopter_y_dec.w = 0;
+	chopter_x_dec.w = 0;
 }
 
 void Update_SpritePlayer() {
@@ -132,7 +134,7 @@ void Update_SpritePlayer() {
 				inc_x = chopter_x_dec.b.h;
 				chopter_x_dec.b.h = 0;
 			}
-
+			
 			tile_coll = TranslateSprite(THIS, inc_x, inc_y);
 			if(U_LESS_THAN(THIS->y, 0)) {
 				THIS->y = 0;
@@ -141,22 +143,22 @@ void Update_SpritePlayer() {
 
 			if(THIS->anim_data == anim_turning) {
 				if(THIS->anim_frame == 3) {
-					if(SPRITE_GET_VMIRROR(THIS)) {
-						SPRITE_UNSET_VMIRROR(THIS);
+					if(THIS->mirror == V_MIRROR) {
+						THIS->mirror = NO_MIRROR;
 					} else {
-						SPRITE_SET_VMIRROR(THIS);
+						THIS->mirror = V_MIRROR;
 					}
 					SetSpriteAnim(THIS, anim_idle, 15);
 				}
 			} else {
 				if(KEY_PRESSED(J_RIGHT)) {
-					if(SPRITE_GET_VMIRROR(THIS)) {
+					if(THIS->mirror == V_MIRROR) {
 						SetSpriteAnim(THIS, anim_turning, 15);
 					} else {
 						SetSpriteAnim(THIS, anim_flying, 15);
 					}
 				} else if(KEY_PRESSED(J_LEFT)) {
-					if(!SPRITE_GET_VMIRROR(THIS)) {
+					if(THIS->mirror == NO_MIRROR) {
 						SetSpriteAnim(THIS, anim_turning, 15);
 					} else {
 						SetSpriteAnim(THIS, anim_flying, 15);
@@ -167,7 +169,7 @@ void Update_SpritePlayer() {
 			}
 
 			if(!sprite_gancho && KEY_TICKED(J_B)) {
-				SpriteManagerAdd(SpriteGancho, THIS->x, THIS->y);
+				SpriteManagerAdd(SpriteGancho, THIS->x + 12, THIS->y);
 			}
 			break;
 		}

@@ -20,7 +20,7 @@ void Start_SpriteRope() {
 void Update_SpriteRope() {
 	UINT16 start_y = sprite_chopter->y + 16;
 	struct RopeInfo* data = (struct RopeInfo*)THIS->custom_data;
-	THIS->x = sprite_gancho->x + 4;
+	THIS->x = sprite_gancho->x - 8;
 
 	data->inc_y += 8;
 	THIS->y = start_y + data->inc_y;

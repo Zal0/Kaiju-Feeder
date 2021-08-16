@@ -19,9 +19,6 @@ void Start_SpriteGancho() {
 	data->vy = 1;
 	sprite_gancho = THIS;
 
-	THIS->coll_w = 4;
-	THIS->coll_x = 12;
-
 	SpriteManagerAdd(SpriteRope, THIS->x, THIS->y);
 }
 
@@ -34,7 +31,7 @@ void Update_SpriteGancho() {
 	struct GanchoInfo* data = (struct GanchoInfo*)THIS->custom_data;
 	data->y += data->vy;
 
-	new_x = sprite_chopter->x;
+	new_x = sprite_chopter->x + 12;
 	new_y = data->y;
 	if(data->vy > 0) { //going down
 		if(TranslateSprite(THIS, new_x - THIS->x, new_y - THIS->y)) {
@@ -44,7 +41,7 @@ void Update_SpriteGancho() {
 				if(spr->type == SpritePollo) {
 					if(CheckCollision(spr, THIS)) {
 						SpriteManagerRemove(i);
-						SET_FRAME(THIS, 1);
+						SetFrame(THIS, 1);
 						data->vy = -1;
 					}
 				}
@@ -53,7 +50,7 @@ void Update_SpriteGancho() {
 	} else { //going up
 		if(THIS->anim_frame == 1) { //pollo grabbed
 			if(TranslateSprite(THIS, new_x - THIS->x, new_y - THIS->y)) { //Gancho with pollo has collided
-				SET_FRAME(THIS, 0);
+				SetFrame(THIS, 0);
 				SpriteManagerAdd(SpritePollo, THIS->x, THIS->y);
 			}
 		} else { //no pollo, just go up
@@ -72,8 +69,8 @@ void Update_SpriteGancho() {
 
 		if(KEY_TICKED(J_B) && THIS->anim_frame == 1) {
 			//Drop the pollo
-			SET_FRAME(THIS, 0);
-			SpriteManagerAdd(SpritePollo, THIS->x, THIS->y);
+			SetFrame(THIS, 0);
+			SpriteManagerAdd(SpritePollo, THIS->x - 12, THIS->y + 12);
 		}
 	}
 

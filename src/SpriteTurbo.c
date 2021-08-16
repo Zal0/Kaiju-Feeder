@@ -15,12 +15,12 @@ void Start_SpriteTurbo() {
 
 void Update_SpriteTurbo() {
 	THIS->y = sprite_chopter->y;
-	if(SPRITE_GET_VMIRROR(sprite_chopter)) {
+	if(sprite_chopter->mirror == V_MIRROR) {
 		THIS->x = sprite_chopter->x + 16;
-		SPRITE_SET_VMIRROR(THIS);
+		THIS->mirror = V_MIRROR;
 	} else {
 		THIS->x = sprite_chopter->x - 8;
-		SPRITE_UNSET_VMIRROR(THIS);
+		THIS->mirror = NO_MIRROR;
 	}
 }
 

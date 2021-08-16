@@ -7,14 +7,13 @@
 
 #include "../res/src/font.h"
 
-extern struct TilesInfo cover_tiles;
-extern struct MapInfo cover;
+IMPORT_MAP(cover);
+IMPORT_TILES(font);
 
 extern UINT8 current_level;
 
 void Start_StateCover() {
-	InitScrollTiles(0, &cover_tiles);
-	InitScroll(&cover, 0, 0);
+	InitScroll(BANK(cover), &cover, 0, 0);
 	SHOW_BKG;
 	HIDE_WIN;
 

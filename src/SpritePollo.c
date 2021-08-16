@@ -19,9 +19,6 @@ void Start_SpritePollo() {
 		return;
 	}
 
-	THIS->coll_h = 4;
-	THIS->coll_y = 12;
-
 	data->vy = 0;
 	coll_tile = GetScrollTile(THIS->x >> 3, (THIS->y + 16) >> 3);
 	if(!scroll_collisions[coll_tile]) {
