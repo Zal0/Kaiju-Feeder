@@ -1,11 +1,11 @@
-#include "Banks/SetBank2.h"
+#include "Banks/SetAutoBank.h"
 
 #include "Keys.h"
 #include "ZGBMain.h"
 #include "Scroll.h"
 #include "Print.h"
 
-#include "../res/src/font.h"
+IMPORT_TILES(font);
 
 IMPORT_MAP(cover);
 IMPORT_TILES(font);
