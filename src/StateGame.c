@@ -52,7 +52,6 @@ void Start_StateGame() {
 	GetMapSize(level->bank, level->map, &map_w, &map_h);
 	ScrollFindTile(level->bank, level->map, 255, 0, 0, map_w, map_h, &start_x, &start_y);
 	scroll_target = SpriteManagerAdd(SpritePlayer, start_x << 3, (start_y - 1) << 3);
-	scroll_target->unique_id = SPRITE_UNIQUE_ID(start_x, start_y);
 
 	InitScroll(level->bank, level->map, collision_tiles, 0);
 	SHOW_BKG;
