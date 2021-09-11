@@ -13,7 +13,7 @@ void Start_SpriteMouth() {
 
 void Update_SpriteMouth() {
 	UINT8 i;
-	struct Sprite* spr;
+	Sprite* spr;
 
 	SPRITEMANAGER_ITERATE(i, spr) {
 		if(spr->type == SpritePollo) {

@@ -4,9 +4,9 @@
 #include "ZGBMain.h"
 #include "Keys.h"
 
-struct Sprite* sprite_gancho = 0;
-extern struct Sprite* sprite_chopter;
-extern struct Sprite* sprite_rope;
+Sprite* sprite_gancho = 0;
+extern Sprite* sprite_chopter;
+extern Sprite* sprite_rope;
 
 struct GanchoInfo {
 	INT16 y;
@@ -26,7 +26,7 @@ void Update_SpriteGancho() {
 	INT16 new_x;
 	INT16 new_y;
 	UINT8 i;
-	struct Sprite* spr;
+	Sprite* spr;
 
 	struct GanchoInfo* data = (struct GanchoInfo*)THIS->custom_data;
 	data->y += data->vy;

@@ -2,9 +2,9 @@
 
 #include "SpriteManager.h"
 
-extern struct Sprite* sprite_chopter;
-extern struct Sprite* sprite_gancho;
-struct Sprite* sprite_rope = 0;
+extern Sprite* sprite_chopter;
+extern Sprite* sprite_gancho;
+Sprite* sprite_rope = 0;
 
 
 struct RopeInfo {

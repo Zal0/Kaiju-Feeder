@@ -3,8 +3,8 @@
 #include "SpriteManager.h"
 #include "Keys.h"
 
-extern struct Sprite* sprite_chopter;
-struct Sprite* sprite_turbo = 0;
+extern Sprite* sprite_chopter;
+Sprite* sprite_turbo = 0;
 
 const UINT8 anim_turbo[] = {2, 0, 1};
 

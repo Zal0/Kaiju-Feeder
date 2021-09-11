@@ -13,7 +13,7 @@ IMPORT_MAP(beach_lvl2);
 IMPORT_MAP(beach_lvl3);
 
 const UINT8 collision_tiles[] = {1, 2, 3, 6, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 33, 39, 0};
-extern struct Sprite* sprite_chopter;
+extern Sprite* sprite_chopter;
 
 UINT8 current_level = 0;
 UINT16 level_done = 0;
@@ -35,7 +35,7 @@ void Start_StateGame() {
 	UINT8 i;
 	UINT16 start_x, start_y;
 	struct MapInfoBanked* level = &level_datas[current_level];
-	struct Sprite* spr;
+	Sprite* spr;
 	UINT8 map_w, map_h;
 
 	level_done = 0;
@@ -58,10 +58,10 @@ void Start_StateGame() {
 
 	INIT_CONSOLE(font, 3, 2);
 
-	SPRITEMANAGER_ITERATE(i, spr) {
+	/*SPRITEMANAGER_ITERATE(i, spr) {
 		DPRINT_POS(0, i);
 		DPrintf("id:%d %d %d ", spr->unique_id, spr->x, spr->y);
-	}
+	}*/
 }
 
 void Update_StateGame() {

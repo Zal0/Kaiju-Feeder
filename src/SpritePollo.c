@@ -4,7 +4,7 @@
 #include "Scroll.h"
 
 const UINT8 anim_pollo_dying[] = {6, 1, 2, 3, 4, 5, 5};
-extern struct Sprite* sprite_gancho;
+extern Sprite* sprite_gancho;
 
 struct PolloInfo {
 	INT8 vy;

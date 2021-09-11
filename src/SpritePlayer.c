@@ -27,9 +27,9 @@ fixed chopter_y_dec;
 INT16 chopter_vx;
 INT16 chopter_vy;
 
-extern struct Sprite* sprite_gancho;
-extern struct Sprite* sprite_turbo;
-struct Sprite* sprite_chopter;
+extern Sprite* sprite_gancho;
+extern Sprite* sprite_turbo;
+Sprite* sprite_chopter;
 
 extern UINT16 level_done;
 
@@ -135,7 +135,9 @@ void Update_SpritePlayer() {
 				chopter_x_dec.b.h = 0;
 			}
 			
-			tile_coll = TranslateSprite(THIS, inc_x, inc_y);
+			//tile_coll = TranslateSprite(THIS, inc_x, inc_y);
+			THIS->x += inc_x;
+			THIS->y += inc_y;
 			if(U_LESS_THAN(THIS->y, 0)) {
 				THIS->y = 0;
 				chopter_vy = 0;
@@ -191,8 +193,8 @@ void Update_SpritePlayer() {
 		}
 	}
 
-	//DPRINT_POS(0, 0);
-	//DPrintf("x:%d y:%d  ", (UINT16)chopter_vx, (UINT16)chopter_vy);
+	DPRINT_POS(0, 0);
+	DPrintf("x:%u y:%u  ", THIS->x, THIS->y);
 }
 
 void Destroy_SpritePlayer() {
