@@ -32,19 +32,11 @@ struct MapInfoBanked level_datas[] = {
 UINT8 num_levels = 3;
 
 void Start_StateGame() {
-	UINT8 i;
 	UINT16 start_x, start_y;
 	struct MapInfoBanked* level = &level_datas[current_level];
-	Sprite* spr;
 	UINT8 map_w, map_h;
 
 	level_done = 0;
-
-	SPRITES_8x16;
-	for(i = 0; i != N_SPRITE_TYPES; ++ i) {
-		SpriteManagerLoad(i);
-	}
-	SHOW_SPRITES;
 
 	scroll_top_movement_limit = 72u;
 	scroll_bottom_movement_limit = 72u;
@@ -54,7 +46,6 @@ void Start_StateGame() {
 	scroll_target = SpriteManagerAdd(SpritePlayer, start_x << 3, (start_y - 1) << 3);
 
 	InitScroll(level->bank, level->map, collision_tiles, 0);
-	SHOW_BKG;
 
 	INIT_CONSOLE(font, 3, 2);
 

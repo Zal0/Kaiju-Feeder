@@ -13,8 +13,6 @@ extern UINT8 num_levels;
 
 void Start_StateCoverWin() {
 	InitScroll(BANK(win), &win, 0, 0);
-	SHOW_BKG;
-	HIDE_WIN;
 
 	INIT_FONT(font, PRINT_BKG);
 	if(current_level == num_levels){

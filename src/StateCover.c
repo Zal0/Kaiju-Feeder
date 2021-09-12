@@ -14,8 +14,6 @@ extern UINT8 current_level;
 
 void Start_StateCover() {
 	InitScroll(BANK(cover), &cover, 0, 0);
-	SHOW_BKG;
-	HIDE_WIN;
 
 	INIT_FONT(font, PRINT_BKG);
 	PRINT(0, 14, "EMILIO J. DOMINGUEZ");
