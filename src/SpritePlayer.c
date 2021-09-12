@@ -135,9 +135,7 @@ void Update_SpritePlayer() {
 				chopter_x_dec.b.h = 0;
 			}
 			
-			//tile_coll = TranslateSprite(THIS, inc_x, inc_y);
-			THIS->x += inc_x;
-			THIS->y += inc_y;
+			tile_coll = TranslateSprite(THIS, inc_x, inc_y);
 			if(U_LESS_THAN(THIS->y, 0)) {
 				THIS->y = 0;
 				chopter_vy = 0;
