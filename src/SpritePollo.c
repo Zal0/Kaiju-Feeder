@@ -6,12 +6,12 @@
 const UINT8 anim_pollo_dying[] = {6, 1, 2, 3, 4, 5, 5};
 extern Sprite* sprite_gancho;
 
-struct PolloInfo {
+typedef struct {
 	INT8 vy;
-};
+} CUSTOM_DATA;
 
-void Start_SpritePollo() {
-	struct PolloInfo* data = (struct PolloInfo*)THIS->custom_data;
+void START() {
+	CUSTOM_DATA* data = (CUSTOM_DATA*)THIS->custom_data;
 	UINT8 coll_tile;
 
 	if(sprite_gancho && sprite_gancho->anim_frame != 0) {
@@ -26,8 +26,8 @@ void Start_SpritePollo() {
 	}
 }
 
-void Update_SpritePollo() {
-	struct PolloInfo* data = (struct PolloInfo*)THIS->custom_data;
+void UPDATE() {
+	CUSTOM_DATA* data = (CUSTOM_DATA*)THIS->custom_data;
 	UINT8 tile_coll;
 
 	if(THIS->anim_data) {
@@ -43,5 +43,5 @@ void Update_SpritePollo() {
 	}
 }
 
-void Destroy_SpritePollo() {
+void DESTROY() {
 }

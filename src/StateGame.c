@@ -31,7 +31,7 @@ struct MapInfoBanked level_datas[] = {
 };
 UINT8 num_levels = 3;
 
-void Start_StateGame() {
+void START() {
 	UINT16 start_x, start_y;
 	struct MapInfoBanked* level = &level_datas[current_level];
 	UINT8 map_w, map_h;
@@ -55,7 +55,7 @@ void Start_StateGame() {
 	}*/
 }
 
-void Update_StateGame() {
+void UPDATE() {
 #ifndef NDEBUG
 	if(KEY_TICKED(J_START)) {
 		current_level ++;

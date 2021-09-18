@@ -8,12 +8,12 @@ Sprite* sprite_turbo = 0;
 
 const UINT8 anim_turbo[] = {2, 0, 1};
 
-void Start_SpriteTurbo() {
+void START() {
 	sprite_turbo = THIS;
 	SetSpriteAnim(THIS, anim_turbo, 15);
 }
 
-void Update_SpriteTurbo() {
+void UPDATE() {
 	THIS->y = sprite_chopter->y;
 	if(sprite_chopter->mirror == V_MIRROR) {
 		THIS->x = sprite_chopter->x + 16;
@@ -24,6 +24,6 @@ void Update_SpriteTurbo() {
 	}
 }
 
-void Destroy_SpriteTurbo() {
+void DESTROY() {
 	sprite_turbo = 0;
 }

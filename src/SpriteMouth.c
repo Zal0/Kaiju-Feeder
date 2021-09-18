@@ -7,11 +7,11 @@ const UINT8 mouth_anim_munch[] = {4, 0, 1, 2, 1};
 
 extern UINT16 level_done;
 
-void Start_SpriteMouth() {
+void START() {
 	SetSpriteAnim(THIS, mouth_anim, 13);
 }
 
-void Update_SpriteMouth() {
+void UPDATE() {
 	UINT8 i;
 	Sprite* spr;
 
@@ -28,5 +28,5 @@ void Update_SpriteMouth() {
 	}
 }
 
-void Destroy_SpriteMouth() {
+void DESTROY() {
 }

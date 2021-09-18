@@ -7,19 +7,19 @@ extern Sprite* sprite_gancho;
 Sprite* sprite_rope = 0;
 
 
-struct RopeInfo {
+typedef struct {
 	INT8 inc_y;
-};
+} CUSTOM_DATA;
 
-void Start_SpriteRope() {
-	struct RopeInfo* data = (struct RopeInfo*)THIS->custom_data;
+void START() {
+	CUSTOM_DATA* data = (CUSTOM_DATA*)THIS->custom_data;
 	sprite_rope = THIS;
 	data->inc_y = 0;
 }
 
-void Update_SpriteRope() {
+void UPDATE() {
 	UINT16 start_y = sprite_chopter->y + 16;
-	struct RopeInfo* data = (struct RopeInfo*)THIS->custom_data;
+	CUSTOM_DATA* data = (CUSTOM_DATA*)THIS->custom_data;
 	THIS->x = sprite_gancho->x - 8;
 
 	data->inc_y += 8;
@@ -32,6 +32,6 @@ void Update_SpriteRope() {
 	}
 }
 
-void Destroy_SpriteRope() {
+void DESTROY() {
 	sprite_rope = 0;
 }

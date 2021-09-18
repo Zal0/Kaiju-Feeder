@@ -11,7 +11,7 @@ IMPORT_MAP(win);
 extern UINT8 current_level;
 extern UINT8 num_levels;
 
-void Start_StateCoverWin() {
+void START() {
 	InitScroll(BANK(win), &win, 0, 0);
 
 	INIT_FONT(font, PRINT_BKG);
@@ -25,7 +25,7 @@ void Start_StateCoverWin() {
 	}
 }
 
-void Update_StateCoverWin() {
+void UPDATE() {
 	if(current_level == num_levels) {
 
 	} else {
