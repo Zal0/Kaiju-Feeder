@@ -12,10 +12,8 @@ IMPORT_TILES(font);
 
 extern UINT8 current_level;
 
-void Start_StateCover() {
+void START() {
 	InitScroll(BANK(cover), &cover, 0, 0);
-	SHOW_BKG;
-	HIDE_WIN;
 
 	INIT_FONT(font, PRINT_BKG);
 	PRINT(0, 14, "EMILIO J. DOMINGUEZ");
@@ -25,7 +23,7 @@ void Start_StateCover() {
 	current_level = 0;
 }
 
-void Update_StateCover() {
+void UPDATE() {
 	if(keys != 0) {
 		SetState(StateCoverWin);
 	}

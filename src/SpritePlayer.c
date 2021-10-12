@@ -27,9 +27,9 @@ fixed chopter_y_dec;
 INT16 chopter_vx;
 INT16 chopter_vy;
 
-extern struct Sprite* sprite_gancho;
-extern struct Sprite* sprite_turbo;
-struct Sprite* sprite_chopter;
+extern Sprite* sprite_gancho;
+extern Sprite* sprite_turbo;
+Sprite* sprite_chopter;
 
 extern UINT16 level_done;
 
@@ -54,14 +54,14 @@ void SetPlayerState(PlayerState _state) {
 	}
 }
 
-void Start_SpritePlayer() {
+void START() {
 	SetPlayerState(StateLanded);
 	sprite_chopter = THIS;
 	chopter_y_dec.w = 0;
 	chopter_x_dec.w = 0;
 }
 
-void Update_SpritePlayer() {
+void UPDATE() {
 	UINT8 tile_coll = 0;
 	INT8 inc_x = 0;
 	INT8 inc_y = 0;
@@ -191,10 +191,10 @@ void Update_SpritePlayer() {
 		}
 	}
 
-	//DPRINT_POS(0, 0);
-	//DPrintf("x:%d y:%d  ", (UINT16)chopter_vx, (UINT16)chopter_vy);
+	DPRINT_POS(0, 0);
+	DPrintf("x:%u y:%u  ", THIS->x, THIS->y);
 }
 
-void Destroy_SpritePlayer() {
+void DESTROY() {
 	sprite_chopter = 0;
 }

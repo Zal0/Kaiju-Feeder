@@ -4,17 +4,17 @@
 #include "ZGBMain.h"
 #include "Keys.h"
 
-struct Sprite* sprite_gancho = 0;
-extern struct Sprite* sprite_chopter;
-extern struct Sprite* sprite_rope;
+Sprite* sprite_gancho = 0;
+extern Sprite* sprite_chopter;
+extern Sprite* sprite_rope;
 
-struct GanchoInfo {
+typedef struct {
 	INT16 y;
 	INT16 vy;
-};
+} CUSTOM_DATA;
 
-void Start_SpriteGancho() {
-	struct GanchoInfo* data = (struct GanchoInfo*)THIS->custom_data;
+void START() {
+	CUSTOM_DATA* data = (CUSTOM_DATA*)THIS->custom_data;
 	data->y = sprite_chopter->y + 16;
 	data->vy = 1;
 	sprite_gancho = THIS;
@@ -22,13 +22,13 @@ void Start_SpriteGancho() {
 	SpriteManagerAdd(SpriteRope, THIS->x, THIS->y);
 }
 
-void Update_SpriteGancho() {
+void UPDATE() {
 	INT16 new_x;
 	INT16 new_y;
 	UINT8 i;
-	struct Sprite* spr;
+	Sprite* spr;
 
-	struct GanchoInfo* data = (struct GanchoInfo*)THIS->custom_data;
+	CUSTOM_DATA* data = (CUSTOM_DATA*)THIS->custom_data;
 	data->y += data->vy;
 
 	new_x = sprite_chopter->x + 12;
@@ -80,6 +80,6 @@ void Update_SpriteGancho() {
 	}
 }
 
-void Destroy_SpriteGancho() {
+void DESTROY() {
 	sprite_gancho = 0;
 }
