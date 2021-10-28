@@ -4,15 +4,18 @@
 #include "ZGBMain.h"
 #include "Scroll.h"
 #include "Print.h"
+#include "SGB.h"
 
 IMPORT_TILES(font);
 
 IMPORT_MAP(cover);
 IMPORT_TILES(font);
+IMPORT_MAP(sgb_border);
 
 extern UINT8 current_level;
 
 void START() {
+	LOAD_SGB_BORDER(sgb_border);
 	InitScroll(BANK(cover), &cover, 0, 0);
 
 	INIT_FONT(font, PRINT_BKG);
